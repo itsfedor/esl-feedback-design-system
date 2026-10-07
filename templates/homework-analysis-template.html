@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<!-- design-system: v1.3 -->
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="color-scheme" content="light" />
+<title>Student Name · Unit 0 Homework Analysis</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  /* ============================================================
+     ESL Feedback Design System v1.3 — canonical stylesheet
+     Token values are frozen in tokens.json (repo root) and
+     documented in docs/design-system.md.
+     Do not tweak one document's copy: change the system, bump the
+     version, rebuild. All sizes/spacings come from the tokens below.
+     ============================================================ */
+  :root {
+    /* colour tokens */
+    --white: #ffffff;
+    --ink-1: #0d0d0d;          /* primary text */
+    --ink-2: #615d59;          /* secondary text: why-notes, table heads */
+    --ink-3: #746f6b;          /* tertiary: subtitle, meta, section titles, originals */
+    --surface-1: #f6f5f4;      /* gadget cards: tips, pills, badges */
+    --surface-2: #fafaf9;      /* reading cards: transcript, fix notes, prompt summary */
+    --line: #ebebeb;           /* standard border */
+    --line-soft: #f0f0ef;      /* soft border: tips, prompt summary */
+    --accent: #0075de;         /* blue rule, dot, tip number */
+    --accent-ink: #0070d5;     /* blue text: links, strong inside blue boxes */
+    --accent-deep: #1e3a5f;    /* body text on blue tint */
+    --accent-tint: #f2f9ff;    /* callout / strengths background */
+    --grammar: #ef4444;        --grammar-tint: #fef2f2;     --grammar-ink: #b91c1c;
+    --word-choice: #d97706;    --word-choice-tint: #fffbeb; --word-choice-ink: #92400e;
+    --flow: #b8860b;           --flow-tint: #fefce8;        --flow-ink: #854d0e;
+    --style: #17a34a;          --style-tint: #f0fdf4;       --style-ink: #065f46;
+    --punct: #a855f7;          --punct-tint: #faf5ff;       --punct-ink: #6d28d9;
+    --praise-line: #c3efdd;    /* border on the green reveal boxes */
+
+    /* type scale — six sizes, no others allowed */
+    --fs-1: 1.75rem;   /* document title */
+    --fs-2: 1.25rem;   /* section heading */
+    --fs-3: 1rem;      /* card title (h3) */
+    --fs-4: 0.95rem;   /* body, transcripts, callouts */
+    --fs-5: 0.875rem;  /* secondary: why-notes, meta, tables, tips */
+    --fs-6: 0.75rem;   /* labels: badge, chip, legend, section title */
+
+    /* spacing — 4px grid, six steps */
+    --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 24px; --sp-6: 32px;
+
+    /* radii */
+    --r-1: 6px; --r-2: 10px; --r-3: 999px;
+    /* no shadows in v1: borders and tints carry every separation */
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: var(--sp-6) var(--sp-5);
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    font-size: var(--fs-4);
+    color: var(--ink-1);
+    line-height: 1.6;
+    background: var(--white);
+  }
+
+  h1 { font-size: var(--fs-1); font-weight: 700; letter-spacing: -0.02em; margin-bottom: var(--sp-1); }
+  h2 { font-size: var(--fs-2); font-weight: 600; margin: var(--sp-6) 0 var(--sp-3); }
+  h3 { font-size: var(--fs-3); font-weight: 600; color: var(--ink-2); margin: var(--sp-5) 0 var(--sp-2); }
+
+  .subtitle { color: var(--ink-3); font-size: var(--fs-5); margin-bottom: var(--sp-2); }
+  .meta { color: var(--ink-3); font-size: var(--fs-5); margin-bottom: var(--sp-2); }
+
+  .section-title {
+    font-size: var(--fs-6); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em;
+    color: var(--ink-3); margin: var(--sp-6) 0 var(--sp-4); padding-bottom: var(--sp-2);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .badge {
+    display: inline-block; font-size: var(--fs-6); font-weight: 500; text-transform: uppercase;
+    letter-spacing: 0.04em; padding: var(--sp-1) var(--sp-2); border-radius: var(--r-3);
+    background: var(--surface-1); color: var(--ink-2); margin-left: var(--sp-2); vertical-align: middle;
+  }
+  .badge.audio { background: var(--accent-tint); color: var(--accent-deep); }
+  .badge.written { background: var(--surface-1); color: var(--ink-2); }
+
+  /* legend */
+  .legend { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin: var(--sp-4) 0 var(--sp-5); }
+  .legend-item {
+    font-size: var(--fs-6); font-weight: 500; color: var(--ink-2); background: var(--surface-1);
+    padding: var(--sp-1) var(--sp-3); border-radius: var(--r-3);
+    display: flex; align-items: center; gap: var(--sp-2);
+  }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .legend-dot.red { background: var(--grammar); }
+  .legend-dot.orange { background: var(--word-choice); }
+  .legend-dot.yellow { background: var(--flow); }
+  .legend-dot.green { background: var(--style); }
+  .legend-dot.purple { background: var(--punct); }
+
+  /* transcript highlights */
+  .hl-red { background: var(--grammar-tint); border-bottom: 1.5px solid var(--grammar); cursor: help; }
+  .hl-orange { background: var(--word-choice-tint); border-bottom: 1.5px solid var(--word-choice); cursor: help; }
+  .hl-yellow { background: var(--flow-tint); border-bottom: 1.5px solid var(--flow); cursor: help; }
+  .hl-green { background: var(--style-tint); border-bottom: 1.5px solid var(--style); cursor: help; }
+  .hl-purple { background: var(--punct-tint); border-bottom: 1.5px solid var(--punct); cursor: help; }
+
+  /* reading cards */
+  .transcript-box {
+    background: var(--surface-2); border: 1px solid var(--line); border-radius: var(--r-2);
+    padding: var(--sp-5); margin: var(--sp-3) 0; font-size: var(--fs-4); line-height: 1.8;
+  }
+  .prompt-summary {
+    background: var(--surface-2); border: 1px solid var(--line-soft); border-radius: var(--r-2);
+    padding: var(--sp-4); margin: var(--sp-2) 0 var(--sp-4); font-size: var(--fs-5); color: var(--ink-2);
+  }
+  .prompt-summary strong { color: var(--ink-1); }
+
+  /* fix notes */
+  .fix-item {
+    padding: var(--sp-3) var(--sp-4); margin: var(--sp-3) 0; border-radius: var(--r-2);
+    border-left: 3px solid var(--ink-3); background: var(--surface-2);
+  }
+  .fix-item.red { border-left-color: var(--grammar); background: var(--grammar-tint); }
+  .fix-item.orange { border-left-color: var(--word-choice); background: var(--word-choice-tint); }
+  .fix-item.yellow { border-left-color: var(--flow); background: var(--flow-tint); }
+  .fix-item.green { border-left-color: var(--style); background: var(--style-tint); }
+  .fix-item.purple { border-left-color: var(--punct); background: var(--punct-tint); }
+  .fix-line { margin: 0; }
+  .fix-item .orig { font-style: italic; color: var(--ink-3); }
+  .fix-item .sugg { font-weight: 600; color: var(--ink-1); }
+  .fix-item .why { color: var(--ink-2); font-size: var(--fs-5); margin-top: var(--sp-1); }
+
+  /* category chip — redundant encoding beside the colour */
+  .chip {
+    display: inline-block; font-size: var(--fs-6); font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.04em; padding: var(--sp-1) var(--sp-2); border-radius: var(--r-3);
+    background: var(--white); border: 1px solid var(--ink-3); color: var(--ink-2); margin-bottom: var(--sp-1);
+  }
+  .chip.red { border-color: var(--grammar); color: var(--grammar-ink); }
+  .chip.orange { border-color: var(--word-choice); color: var(--word-choice-ink); }
+  .chip.yellow { border-color: var(--flow); color: var(--flow-ink); }
+  .chip.green { border-color: var(--style); color: var(--style-ink); }
+  .chip.purple { border-color: var(--punct); color: var(--punct-ink); }
+
+  /* green reveal boxes */
+  .revised-box {
+    background: var(--style-tint); border: 1px solid var(--praise-line); border-radius: var(--r-2);
+    padding: var(--sp-5); margin: var(--sp-4) 0; line-height: 1.8;
+  }
+  .revised-box .label {
+    display: inline-block; background: var(--style-ink); color: var(--white); font-size: var(--fs-6);
+    font-weight: 600; padding: var(--sp-1) var(--sp-3); border-radius: var(--r-3); margin-bottom: var(--sp-3);
+  }
+  .praise-box {
+    background: var(--style-tint); border: 1px solid var(--praise-line); border-radius: var(--r-2);
+    padding: var(--sp-4) var(--sp-5); margin: var(--sp-3) 0;
+  }
+  .praise-box strong { color: var(--style-ink); }
+
+  /* blue boxes */
+  .callout {
+    background: var(--accent-tint); border-left: 3px solid var(--accent);
+    border-radius: 0 var(--r-2) var(--r-2) 0; padding: var(--sp-4) var(--sp-5);
+    margin: var(--sp-4) 0; font-size: var(--fs-4); color: var(--accent-deep);
+  }
+  .callout strong { color: var(--accent-ink); }
+  .strengths-box {
+    background: var(--accent-tint); border-left: 3px solid var(--accent);
+    border-radius: 0 var(--r-2) var(--r-2) 0; padding: var(--sp-5); margin: var(--sp-5) 0;
+  }
+  .strengths-box .item { margin: var(--sp-2) 0; font-size: var(--fs-4); }
+  .strengths-box .item strong { color: var(--accent-ink); }
+
+  /* tables */
+  .table-scroll { overflow-x: auto; margin: var(--sp-4) 0; -webkit-overflow-scrolling: touch; }
+  table.comp { width: 100%; min-width: 480px; border-collapse: collapse; font-size: var(--fs-5); }
+  table.comp th, table.comp td {
+    border: 1px solid var(--line); padding: var(--sp-3); text-align: left; vertical-align: top;
+  }
+  table.comp th { background: var(--surface-1); font-weight: 600; color: var(--ink-2); }
+  table.comp td.good { color: var(--style-ink); }
+  table.comp td.miss { color: var(--grammar-ink); }
+
+  /* audio */
+  .audio-block { margin: var(--sp-3) 0; }
+  audio { display: block; width: 100%; border-radius: var(--r-1); }
+
+  /* tips */
+  .tips-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); margin: var(--sp-4) 0; }
+  .tip-card {
+    background: var(--surface-1); border: 1px solid var(--line-soft); border-radius: var(--r-2);
+    padding: var(--sp-4); font-size: var(--fs-5);
+  }
+  .tip-num {
+    display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px;
+    background: var(--accent); color: var(--white); font-weight: 700; font-size: var(--fs-6);
+    border-radius: var(--r-1); margin-bottom: var(--sp-2);
+  }
+  .tip-card a { display: inline-block; margin-top: var(--sp-2); font-size: var(--fs-5); color: var(--accent-ink); text-decoration: none; font-weight: 500; }
+  .tip-card a:hover { text-decoration: underline; }
+
+  /* keyboard focus */
+  a:focus-visible, audio:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+  /* small screens */
+  @media (max-width: 600px) { .tips-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 480px) {
+    body { padding: var(--sp-5) var(--sp-4); }
+    .transcript-box, .revised-box, .strengths-box { padding: var(--sp-4); }
+    .fix-item { padding: var(--sp-3); }
+  }
+
+  /* print */
+  @media print {
+    body { max-width: none; padding: 0; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .audio-block { display: none; }
+    .table-scroll { overflow: visible; }
+    .fix-item, .transcript-box, .revised-box, .praise-box, .callout, .tip-card, .strengths-box, table.comp tr { break-inside: avoid; page-break-inside: avoid; }
+    a { text-decoration: underline; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================================================================
+     HOW TO USE THIS TEMPLATE (design-system v1.3)
+     1. Copy this file to <student>-<unit>-<date>.html and fill every
+        block marked SLOT. Keep the class names and the structure.
+     2. Task blocks (TASK BLOCK START / END) repeat once per task.
+     3. Never invent colours, font sizes or spacings: use the classes.
+     4. Keep teacher notes short: a why note is 2-3 sentences (the fix,
+        one reason). Plain voice; the student's quoted words are never
+        edited.
+     5. Run: python3 tools/check_design.py <file>
+     6. Keep the version stamp on line 2. Delivered documents are never
+        edited afterwards; fixes mean a new dated file.
+     ================================================================ -->
+
+<!-- SLOT: doc header — student name + unit in the h1; tasks and level in the subtitle; check date and submission dates in the meta -->
+<h1>Student Name · Unit 0 Homework Analysis</h1>
+<p class="subtitle">Unit 0 Practical English: topic · one voice recording + written answers · Level: A2+</p>
+<p class="meta">Checked Month DD, YYYY · submitted Month DD, YYYY</p>
+
+<!-- SLOT: legend — the five categories and their order are fixed; the legend names are fixed text, do not reword -->
+<div class="legend">
+  <div class="legend-item"><span class="legend-dot red"></span> Grammar</div>
+  <div class="legend-item"><span class="legend-dot orange"></span> Word choice</div>
+  <div class="legend-item"><span class="legend-dot yellow"></span> Sentence flow</div>
+  <div class="legend-item"><span class="legend-dot green"></span> Style &amp; speech habits</div>
+  <div class="legend-item"><span class="legend-dot purple"></span> Punctuation (written only)</div>
+</div>
+
+<!-- ============ TASK BLOCK START (copy for every task; delete what a task does not have) ============ -->
+<!-- SLOT: task header — task number + title, then EXACTLY ONE badge: <span class="badge audio">audio</span> or <span class="badge written">written</span> -->
+<div class="section-title">Task 1 · Task Title <span class="badge audio">audio</span></div>
+
+<!-- SLOT: prompt summary — what the exercise asked; one short line. Delete for written gap tasks that need no recap -->
+<div class="prompt-summary">
+  <strong>What they asked:</strong> the two questions of the task.
+</div>
+
+<!-- SLOT: audio player — replace BOTH src and type with the recording's full URL
+     and type="audio/mpeg". REPLACE-ME.wav is a one-second beep: if a document ships it by
+     accident, the student hears the beep instead of the recording. Delete this whole block
+     for written tasks. -->
+<div class="audio-block">
+  <audio controls>
+    <source src="REPLACE-ME.wav" type="audio/wav">
+  </audio>
+</div>
+
+<!-- SLOT: transcript — the student's answer with errors, wrapped in hl-* spans. Colour classes are fixed:
+     hl-red grammar · hl-orange word choice · hl-yellow sentence flow · hl-green style & speech · hl-purple punctuation -->
+<h3>What You Said</h3>
+<div class="transcript-box">
+  Alex flew to Lisbon on Friday. He <span class="hl-red">didn't took</span> a taxi, he took the metro,
+  and at the hotel he <span class="hl-orange">rented</span> a room with a view of the river.
+  On the second day <span class="hl-yellow">the museum was closed and the restaurant was full so they walked to the old town</span>.
+  In the morning, um, <span class="hl-green">he, he</span> found his ticket on the table. He was tired<span class="hl-purple">,</span>
+  because he woke up early, so he missed breakfast.
+</div>
+
+<!-- SLOT: fix notes — one card per finding, in the order the errors appear. Class = colour, chip label = category
+     (red Grammar · orange Word choice · yellow Sentence flow · green Style & speech · purple Punctuation).
+     Keep the why note to 2-3 short sentences: the correction, one reason. -->
+<h3>Fix Notes</h3>
+
+<div class="fix-item red">
+  <span class="chip red">Grammar</span>
+  <div class="fix-line"><span class="orig">didn't took</span> → <span class="sugg">didn't take</span></div>
+  <div class="why">After <b>didn't</b> the verb stays in its base form: <b>didn't take</b>. Same shape as <b>didn't want</b>, which you already say correctly.</div>
+</div>
+
+<div class="fix-item orange">
+  <span class="chip orange">Word choice</span>
+  <div class="fix-line"><span class="orig">rented a room</span> → <span class="sugg">booked a room</span></div>
+  <div class="why">Rent is for a flat and for months. A hotel room is <b>booked</b>. One word, and the whole sentence sounds like a traveller wrote it.</div>
+</div>
+
+<div class="fix-item yellow">
+  <span class="chip yellow">Sentence flow</span>
+  <div class="fix-line"><span class="orig">the museum was closed and the restaurant was full so they walked to the old town</span> → <span class="sugg">The museum was closed and the restaurant was full. So they walked to the old town.</span></div>
+  <div class="why">Four ideas ran on one breath. Cut them at <b>closed</b>, at <b>full</b>, and start the last one with <b>So</b>. Short sentences also give you a place to breathe.</div>
+</div>
+
+<div class="fix-item green">
+  <span class="chip green">Style &amp; speech</span>
+  <div class="fix-line"><span class="orig">he, he ... um</span></div>
+  <div class="why">Restart and thinking sound: both normal in speech. Your ear caught the restart by itself, which is the skill underneath the note.</div>
+</div>
+
+<div class="fix-item purple">
+  <span class="chip purple">Punctuation</span>
+  <div class="fix-line"><span class="orig">tired, because</span> → <span class="sugg">tired because</span></div>
+  <div class="why">Russian puts a comma before "потому что"; English runs the two clauses together. Save commas for lists and asides.</div>
+</div>
+
+<!-- SLOT: revised version — the corrected text. Heading says "(Spoken)" for audio tasks, plain for written -->
+<h3>How It Could Sound (Spoken)</h3>
+<div class="revised-box">
+  <div class="label">More Polished Spoken Version</div>
+  Alex flew to Lisbon on Friday. He didn't take a taxi, he took the metro, and at the hotel he booked a room
+  with a view of the river. On the second day the museum was closed and the restaurant was full. So they walked
+  to the old town. He was tired because he woke up early, so he missed breakfast.
+</div>
+
+<!-- SLOT: praise — one concrete thing the student did right in this task; always keep one -->
+<div class="praise-box">
+  <strong>What worked.</strong> Name the exact phrase or number that shows the skill, so the praise points at behaviour, not at effort.
+</div>
+<!-- ============ TASK BLOCK END ============ -->
+
+<!-- SLOT: comprehension overview — one row per task; the middle column holds the key fact of the source, the last column the verdict -->
+<div class="section-title">Comprehension Overview</div>
+
+<div class="table-scroll">
+  <table class="comp">
+    <thead>
+      <tr>
+        <th>Task</th><th>Key Fact</th><th>Student's Answer</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Key fact from the source material</td>
+        <td class="good">&#10003; Correct</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Key fact from the source material</td>
+        <td class="miss">Almost: what was missed</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SLOT: tips — 2 to 4 cards; each one is one practice action taken from this homework's fix notes -->
+<div class="section-title">Actionable Tips</div>
+
+<div class="tips-grid">
+  <div class="tip-card">
+    <div class="tip-num">1</div>
+    <strong>One-line rule.</strong> Why it matters, in the student's own words from the homework, and how to drill it in one breath.
+  </div>
+  <div class="tip-card">
+    <div class="tip-num">2</div>
+    <strong>Second rule with a practice link.</strong> Two sentences. Then one link to the matching exercise.<br>
+    <a href="https://test-english.com/" target="_blank">test-english.com → exact exercise name</a>
+  </div>
+</div>
+
+<!-- SLOT: strengths — 3 to 6 items, each starting with &#127775; on an exact quote or number from the homework -->
+<div class="section-title">Strengths</div>
+
+<div class="strengths-box">
+  <div class="item"><strong>&#127775; A named strength.</strong> The quote or number that proves it, and why it matters at this level.</div>
+  <div class="item"><strong>&#127775; A second named strength.</strong> The quote or number that proves it.</div>
+</div>
+
+</body>
+</html>

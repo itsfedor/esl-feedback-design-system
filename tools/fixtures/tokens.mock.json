@@ -1,0 +1,20 @@
+{
+  "name": "esl-feedback-design",
+  "version": "1.0",
+  "font_sizes": {
+    "xs": "0.75rem",
+    "sm": "0.875rem",
+    "base": "1rem",
+    "lg": "1.25rem",
+    "xl": "1.5rem",
+    "badge": "0.8125rem"
+  },
+  "colors": {
+    "allowed": [
+      "#ffffff", "#615d59", "#a39e98", "#f6f5f4", "#ef4444", "#f59e0b",
+      "#eab308", "#22c55e", "#a855f7", "#0075de", "#10b981", "#065f46",
+      "#b91c1c", "#1e3a5f", "#f2f9ff", "#f8f8f7", "#fef2f2", "#fffbeb",
+      "#fefce8", "#f0fdf4", "#faf5ff", "#fafaf9", "#f0fdfa", "#0f0f0f"
+    ]
+  }
+}

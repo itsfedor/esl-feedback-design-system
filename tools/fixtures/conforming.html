@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<title>Nomina · Synthetic Conformance Fixture</title>
+<!-- design-system: v1.0 -->
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    max-width: 760px; margin: 0 auto; padding: 40px 24px;
+    font-family: 'Inter', system-ui, sans-serif; color: #0f0f0f;
+    line-height: 1.6; background: #ffffff;
+  }
+  h1 { font-size: 1.5rem; font-weight: 700; }
+  h2 { font-size: 1.25rem; font-weight: 600; }
+  .legend { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 24px; }
+  .legend-item { font-size: 0.875rem; color: #615d59; background: #f6f5f4; padding: 4px 12px; border-radius: 9999px; }
+  .legend-dot.red { background: #ef4444; }
+  .fix-item { padding: 12px 16px; margin: 10px 0; border-left: 3px solid #ef4444; background: #fef2f2; font-size: 1rem; }
+  .closing { background: #f6f5f4; border-radius: 10px; padding: 24px; margin-top: 32px; font-size: 0.875rem; color: #615d59; }
+  .badge { font-size: 0.8125rem; color: #0075de; }
+  a:focus-visible { outline: 2px solid #0075de; outline-offset: 2px; }
+  @media (max-width: 600px) { body { padding: 24px 16px; } }
+  @media print {
+    body { max-width: none; padding: 0; }
+    .legend { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Nomina · Unit 3 Homework Analysis <span class="badge">fixture</span></h1>
+<p class="subtitle">Legend below, one fix item, and a closing block. Six font sizes, palette-only colors.</p>
+
+<div class="legend">
+  <div class="legend-item"><span class="legend-dot red"></span> Grammar</div>
+  <div class="legend-item"><span class="legend-dot red"></span> Word choice</div>
+</div>
+
+<h2>Fix Notes</h2>
+<audio controls><source src="sample.wav" type="audio/wav"></audio>
+<div class="fix-item">
+  <span class="orig">freeze</span>
+  <div class="why">On a plate it is fries.</div>
+</div>
+
+<div class="closing">
+  <p>Three things to practise out loud: instead of as one block, the small verbs, and the openers.</p>
+</div>
+
+</body>
+</html>

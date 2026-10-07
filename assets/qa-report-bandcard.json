@@ -1,0 +1,132 @@
+{
+  "tool": "qa_run.py",
+  "generated": "2026-10-07T14:53:50+0000",
+  "viewports": {
+    "desktop": {
+      "width": 1440,
+      "height": 900
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844
+    }
+  },
+  "results": [
+    {
+      "url": "http://127.0.0.1:45725/demo-band-card.html",
+      "viewports": {
+        "desktop": {
+          "viewport": "1440x900 dpr1",
+          "console_errors": [],
+          "console_warnings": [],
+          "page_errors": [],
+          "failed_requests": [],
+          "screenshots": [
+            "demo-bandcard-desktop.png",
+            "demo-bandcard-desktop-full.png"
+          ],
+          "title": "Sam Carter · IELTS Diagnostic · Band Summary",
+          "client_width": 1440,
+          "scroll_width": 1440,
+          "inner_width": 1440,
+          "overflow_px": 0,
+          "fonts": {
+            "status": "loaded",
+            "faces_total": 28,
+            "faces_loaded": 4,
+            "faces_error": 0,
+            "families_loaded": [
+              "Inter"
+            ],
+            "families_error": [],
+            "families_pending": [
+              "Inter"
+            ]
+          },
+          "audio": {
+            "count": 1,
+            "with_source": 1,
+            "detail": [
+              {
+                "hasSource": true,
+                "sourceCount": 1,
+                "sources": [
+                  "demo-tone.wav"
+                ],
+                "readyState": 4,
+                "src": null
+              }
+            ]
+          }
+        },
+        "mobile": {
+          "viewport": "390x844 dpr2 mobile-emulation",
+          "console_errors": [],
+          "console_warnings": [],
+          "page_errors": [],
+          "failed_requests": [],
+          "screenshots": [
+            "demo-bandcard-mobile.png",
+            "demo-bandcard-mobile-full.png"
+          ],
+          "title": "Sam Carter · IELTS Diagnostic · Band Summary",
+          "client_width": 390,
+          "scroll_width": 390,
+          "inner_width": 390,
+          "overflow_px": 0,
+          "fonts": {
+            "status": "loaded",
+            "faces_total": 28,
+            "faces_loaded": 4,
+            "faces_error": 0,
+            "families_loaded": [
+              "Inter"
+            ],
+            "families_error": [],
+            "families_pending": [
+              "Inter"
+            ]
+          },
+          "audio": {
+            "count": 1,
+            "with_source": 1,
+            "detail": [
+              {
+                "hasSource": true,
+                "sourceCount": 1,
+                "sources": [
+                  "demo-tone.wav"
+                ],
+                "readyState": 4,
+                "src": null
+              }
+            ]
+          }
+        }
+      },
+      "screenshots": [
+        "demo-bandcard-desktop.png",
+        "demo-bandcard-desktop-full.png",
+        "demo-bandcard-mobile.png",
+        "demo-bandcard-mobile-full.png"
+      ],
+      "runner_errors": [],
+      "checks": {
+        "desktop.console_errors": true,
+        "desktop.page_errors": true,
+        "desktop.overflow": true,
+        "desktop.fonts_loaded": true,
+        "desktop.audio_with_source": true,
+        "mobile.console_errors": true,
+        "mobile.page_errors": true,
+        "mobile.overflow": true,
+        "mobile.fonts_loaded": true,
+        "mobile.audio_with_source": true
+      },
+      "pass": true,
+      "file": "examples/demo-band-card.html",
+      "prefix": "demo-bandcard"
+    }
+  ],
+  "pass": true
+}
