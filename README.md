@@ -60,7 +60,7 @@ esl-feedback-design-system/
 ├── templates/   homework-analysis-template.html · band-card-template.html · REPLACE-ME.wav
 ├── tools/       check_design.py · qa_run.py · selftest.sh · fixtures/
 ├── examples/    demo-homework-analysis.html · demo-band-card.html · demo-tone.wav
-├── docs/        design-system.md (full spec, v1.4)
+├── docs/        design-system.md (full spec, v1.5)
 ├── assets/      banners · demo screenshots · QA reports
 └── tokens.json  machine-readable palette, type scale, spacing (read by the linter)
 ```

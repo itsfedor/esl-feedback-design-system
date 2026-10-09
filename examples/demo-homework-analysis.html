@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- design-system: v1.3 -->
+<!-- design-system: v1.5 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   /* ============================================================
-     ESL Feedback Design System v1.3 — canonical stylesheet
+     ESL Feedback Design System v1.5 — canonical stylesheet
      Token values are frozen in tokens.json (repo root) and
      documented in docs/design-system.md.
      Do not tweak one document's copy: change the system, bump the
@@ -145,15 +145,7 @@
   .chip.green { border-color: var(--style); color: var(--style-ink); }
   .chip.purple { border-color: var(--punct); color: var(--punct-ink); }
 
-  /* green reveal boxes */
-  .revised-box {
-    background: var(--style-tint); border: 1px solid var(--praise-line); border-radius: var(--r-2);
-    padding: var(--sp-5); margin: var(--sp-4) 0; line-height: 1.8;
-  }
-  .revised-box .label {
-    display: inline-block; background: var(--style-ink); color: var(--white); font-size: var(--fs-6);
-    font-weight: 600; padding: var(--sp-1) var(--sp-3); border-radius: var(--r-3); margin-bottom: var(--sp-3);
-  }
+  /* green praise box */
   .praise-box {
     background: var(--style-tint); border: 1px solid var(--praise-line); border-radius: var(--r-2);
     padding: var(--sp-4) var(--sp-5); margin: var(--sp-3) 0;
@@ -209,7 +201,7 @@
   @media (max-width: 600px) { .tips-grid { grid-template-columns: 1fr; } }
   @media (max-width: 480px) {
     body { padding: var(--sp-5) var(--sp-4); }
-    .transcript-box, .revised-box, .strengths-box { padding: var(--sp-4); }
+    .transcript-box, .strengths-box { padding: var(--sp-4); }
     .fix-item { padding: var(--sp-3); }
   }
 
@@ -218,7 +210,7 @@
     body { max-width: none; padding: 0; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
     .audio-block { display: none; }
     .table-scroll { overflow: visible; }
-    .fix-item, .transcript-box, .revised-box, .praise-box, .callout, .tip-card, .strengths-box, table.comp tr { break-inside: avoid; page-break-inside: avoid; }
+    .fix-item, .transcript-box, .praise-box, .callout, .tip-card, .strengths-box, table.comp tr { break-inside: avoid; page-break-inside: avoid; }
     a { text-decoration: underline; }
   }
 </style>
@@ -292,15 +284,6 @@
   <div class="fix-line"><span class="orig">came out, after lunch</span> → <span class="sugg">came out after lunch</span></div>
   <div class="why">No comma before <b>after lunch</b>. The sentence runs without a pause, and commas are for lists
   and real pauses.</div>
-</div>
-
-<h3>How It Could Sound (Spoken)</h3>
-<div class="revised-box">
-  <div class="label">More Polished Spoken Version</div>
-  Last weekend we went to Chiang Mai. We took the night train and arrived on Saturday morning. The hotel was near
-  the river, so we walked to the market and ate street food. We watched the sunset, then went back to the hotel.
-  On Sunday my sister wanted to take photos of the temple. It was raining, but we waited and the sun came out
-  after lunch.
 </div>
 
 <div class="praise-box">

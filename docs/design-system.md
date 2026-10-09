@@ -1,6 +1,6 @@
-# ESL Feedback Design System — v1.4
+# ESL Feedback Design System — v1.5
 
-Status: **v1.4**, updated 2026-10-05. Scope: student feedback documents (the
+Status: **v1.5**, updated 2026-10-09. Scope: student feedback documents (the
 "ESL Analysis" family): homework analyses and IELTS band cards. Light theme
 only. This system is a polish of a working style, not a redesign: every
 decision below is checkable with numbers.
@@ -8,7 +8,7 @@ decision below is checkable with numbers.
 | File | What it is |
 |---|---|
 | `templates/homework-analysis-template.html` | Canonical template. A new document is a copy of this file |
-| `templates/band-card-template.html` | Skeleton of the IELTS band card (v1.3 variant, sections 11–12) |
+| `templates/band-card-template.html` | Skeleton of the IELTS band card (band-card variant, v1.4) |
 | `templates/REPLACE-ME.wav` | Audio placeholder: a one-second beep. A copy of a template that forgot to replace the `src` beeps instead of playing the recording |
 | `tokens.json` | Machine-readable tokens for the linter (`version`, `colors.allowed`, `font_sizes`, `spacing`) |
 | `docs/design-system.md` | This document |
@@ -54,7 +54,7 @@ transcript underline, chip border), **tint** (card background and highlights),
 | `--accent-ink` | `#0070d5` | blue text: links, strong inside blue boxes |
 | `--accent-deep` | `#1e3a5f` | text on the blue tint |
 | `--accent-tint` | `#f2f9ff` | callout / strengths background |
-| `--praise-line` | `#c3efdd` | border of the green reveal boxes |
+| `--praise-line` | `#c3efdd` | border of the green praise box |
 
 ### Contrast (WCAG 2.x)
 
@@ -68,7 +68,7 @@ Minimums: normal text 4.5:1, non-text indicators 3:1.
 | base indicators vs their own tint | 3.07 (orange) | 3.0 | PASS |
 | ink roles (chip text) | 5.91 (grammar) | 4.5 | PASS |
 | `--accent-ink` on `--surface-1` | 4.58 | 4.5 | PASS |
-| white text on `--style-ink` (revised label) | 7.68 | 4.5 | PASS |
+| white text on `--style-ink` (until v1.5, the revised label) | 7.68 | 4.5 | PASS |
 
 ### What changed and why (movement kept to a minimum, all by the numbers)
 
@@ -100,7 +100,7 @@ them with `tokens.json`).
 | `--fs-1` | 1.75rem | document title | `h1` |
 | `--fs-2` | 1.25rem | section heading | `h2` |
 | `--fs-3` | 1rem | card title | `h3` |
-| `--fs-4` | 0.95rem | body | body, transcript, callout, strengths, praise, revised |
+| `--fs-4` | 0.95rem | body | body, transcript, callout, strengths, praise |
 | `--fs-5` | 0.875rem | secondary | subtitle, meta, why, tables, tips, links |
 | `--fs-6` | 0.75rem | label | badge, chip, legend item, section title, tip number (uppercase, letter-spaced) |
 
@@ -108,8 +108,8 @@ The audit's 26 distinct sizes were folded by component role into these six
 (for example 14.5px went to 1rem as a card title and to 0.875rem as body text).
 That is the point of the scale: six roles instead of twenty-six values.
 
-Line heights: two values, 1.6 (default) and 1.8 (long-form reading: transcript,
-revised version). Weights 400/500/600/700 (Inter, Google Fonts). Tracking:
+Line heights: two values, 1.6 (default) and 1.8 (long-form reading: transcript).
+Weights 400/500/600/700 (Inter, Google Fonts). Tracking:
 -0.02em on h1, 0.06em on section titles, 0.04em on badges and chips.
 
 ---
@@ -125,7 +125,7 @@ Exclusions (not spacing): border widths 1px / 1.5px (highlight underline) /
 tip number 24px, page max-width 760px), radii.
 
 Radii: `--r-1: 6px` (tip number, audio), `--r-2: 10px` (cards), `--r-3: 999px`
-(badges, chips, legend pills, revised label); the callout uses
+(badges, chips, legend pills); the callout uses
 `0 10px 10px 0`. Shadows: none. Borders and tints carry every separation.
 
 ---
@@ -145,7 +145,7 @@ Comprehension Overview → Actionable Tips → Strengths.
 | Transcript | `.transcript-box` + `.hl-{role}` | The student's errors are underlined in the role's base colour on its own tint. The class is the category; no other highlight classes allowed |
 | Fix card | `.fix-item.{role}` | 3px left rule, tint background. Inside: `.chip` → `.fix-line` (`.orig` → `.sugg`) → `.why` |
 | Category chip | `.chip` of the same role | **Mandatory in every fix**: the category as text on top of the colour (colour-blindness protection). Fixed forms: Grammar, Word choice, Sentence flow, Style & speech, Punctuation |
-| Revised version | `.revised-box` + `.label` | Solid dark-green label, white text; heading says "(Spoken)" for audio tasks |
+| Revised version (removed in v1.5) | ~~`.revised-box` + `.label`~~ | No longer part of the structure: "How It Could Sound/Read" blocks are not generated; they remain only in documents shipped before 2026-10-01 |
 | Praise | `.praise-box` | One concrete win per task, with a number or a quote; always present |
 | Blue boxes | `.strengths-box` (and optional `.callout`) | 3px blue left rule, `--accent-tint` background |
 | Tables | `.table-scroll > table.comp` | The wrapper is mandatory (mobile scroll). Verdict cells: `td.good`, `td.miss` |
@@ -153,8 +153,8 @@ Comprehension Overview → Actionable Tips → Strengths.
 | Strengths | `.strengths-box` + `.item` | 3–6 items, each starting with a star, each carrying a quote or a number |
 
 Slot instructions for authors inside the template are marked
-`<!-- SLOT: … -->` — each one says what to fill in and which classes are
-allowed.
+`<!-- SLOT: … -->` (11 markers) — each one says what to fill in and which
+classes are allowed.
 
 ---
 
@@ -206,10 +206,10 @@ padding drops to zero.
    stamp, `tokens.json` → `version`, and this document's title.
 5. **Delivered documents are never rewritten.** A typo fix is a new dated file;
    the old one stays as delivered.
-6. **Prose rules for teacher text** (fix notes, praise, tips, revised
-   versions): short, 2–3 sentences per why-note; second person ("you"), never
-   third; no long dashes; no machine speech metrics (no wpm, no pause counts,
-   no "thinking sound" counters); varied sentence lengths. The student's own
+6. **Prose rules for teacher text** (fix notes, praise, tips): short, 2–3
+   sentences per why-note; second person ("you"), never third; no long
+   dashes; no machine speech metrics (no wpm, no pause counts, no "thinking
+   sound" counters); varied sentence lengths. The student's own
    words (transcripts, quotes, written answers) are never edited.
 
 ---
@@ -226,8 +226,8 @@ padding drops to zero.
   zero page overflow; on the phone the tables scroll inside their wrapper
   (483px inside 358px) while the desktop fits them whole; an old baseline had
   117px of horizontal overflow on mobile, which v1 removed.
-- Linter: 9/9 on the template and on the showcase at every version, including
-  v1.1–v1.4. The tooling self-test (`tools/selftest.sh`) asserts both tools'
+- Linter: 9/9 on the templates and the demos at every version, including
+  v1.1–v1.5. The tooling self-test (`tools/selftest.sh`) asserts both tools'
   exit codes against the fixtures.
 - **v1.1** (2026-09-24): the closing block, the line after the legend and the
   "At a Glance" section were removed from the structure.
@@ -244,6 +244,18 @@ padding drops to zero.
   Mapping: Listening → `--accent`, Reading → `--style`, Writing →
   `--word-choice`, Speaking → `--punct`. The text label of the skill is always
   kept: the colour duplicates, it does not replace.
+- **v1.5** (2026-10-09): the revised-version block left the canon. The "How It
+  Could Sound (Spoken)" / "How It Could Read" blocks and the green "More
+  Polished …" label are no longer generated: after the fixes a task goes
+  straight to its praise box (praise stays mandatory). Both templates lost
+  the slot — 11 `SLOT` markers now — and the `.revised-box` / `.revised-box
+  .label` CSS rules were removed from the canonical stylesheet (the component
+  is retired the way `.closing` was in v1.1). The linter is unchanged: the
+  block never was a required component. Applied to documents shipped from
+  2026-10-01; earlier files and showcases keep the block historically and are
+  not rebuilt. Version bumped in the three places: template stamps (v1.5),
+  `tokens.json` (1.5), this document's title. The band-card skeleton is
+  unchanged.
 
 ---
 

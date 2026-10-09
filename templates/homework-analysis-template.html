@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- design-system: v1.3 -->
+<!-- design-system: v1.5 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
   /* ============================================================
-     ESL Feedback Design System v1.3 — canonical stylesheet
+     ESL Feedback Design System v1.5 — canonical stylesheet
      Token values are frozen in tokens.json (repo root) and
      documented in docs/design-system.md.
      Do not tweak one document's copy: change the system, bump the
@@ -145,15 +145,7 @@
   .chip.green { border-color: var(--style); color: var(--style-ink); }
   .chip.purple { border-color: var(--punct); color: var(--punct-ink); }
 
-  /* green reveal boxes */
-  .revised-box {
-    background: var(--style-tint); border: 1px solid var(--praise-line); border-radius: var(--r-2);
-    padding: var(--sp-5); margin: var(--sp-4) 0; line-height: 1.8;
-  }
-  .revised-box .label {
-    display: inline-block; background: var(--style-ink); color: var(--white); font-size: var(--fs-6);
-    font-weight: 600; padding: var(--sp-1) var(--sp-3); border-radius: var(--r-3); margin-bottom: var(--sp-3);
-  }
+  /* green praise box */
   .praise-box {
     background: var(--style-tint); border: 1px solid var(--praise-line); border-radius: var(--r-2);
     padding: var(--sp-4) var(--sp-5); margin: var(--sp-3) 0;
@@ -209,7 +201,7 @@
   @media (max-width: 600px) { .tips-grid { grid-template-columns: 1fr; } }
   @media (max-width: 480px) {
     body { padding: var(--sp-5) var(--sp-4); }
-    .transcript-box, .revised-box, .strengths-box { padding: var(--sp-4); }
+    .transcript-box, .strengths-box { padding: var(--sp-4); }
     .fix-item { padding: var(--sp-3); }
   }
 
@@ -218,7 +210,7 @@
     body { max-width: none; padding: 0; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
     .audio-block { display: none; }
     .table-scroll { overflow: visible; }
-    .fix-item, .transcript-box, .revised-box, .praise-box, .callout, .tip-card, .strengths-box, table.comp tr { break-inside: avoid; page-break-inside: avoid; }
+    .fix-item, .transcript-box, .praise-box, .callout, .tip-card, .strengths-box, table.comp tr { break-inside: avoid; page-break-inside: avoid; }
     a { text-decoration: underline; }
   }
 </style>
@@ -226,7 +218,7 @@
 <body>
 
 <!-- ================================================================
-     HOW TO USE THIS TEMPLATE (design-system v1.3)
+     HOW TO USE THIS TEMPLATE (design-system v1.5)
      1. Copy this file to <student>-<unit>-<date>.html and fill every
         block marked SLOT. Keep the class names and the structure.
      2. Task blocks (TASK BLOCK START / END) repeat once per task.
@@ -316,15 +308,6 @@
   <span class="chip purple">Punctuation</span>
   <div class="fix-line"><span class="orig">tired, because</span> → <span class="sugg">tired because</span></div>
   <div class="why">Russian puts a comma before "потому что"; English runs the two clauses together. Save commas for lists and asides.</div>
-</div>
-
-<!-- SLOT: revised version — the corrected text. Heading says "(Spoken)" for audio tasks, plain for written -->
-<h3>How It Could Sound (Spoken)</h3>
-<div class="revised-box">
-  <div class="label">More Polished Spoken Version</div>
-  Alex flew to Lisbon on Friday. He didn't take a taxi, he took the metro, and at the hotel he booked a room
-  with a view of the river. On the second day the museum was closed and the restaurant was full. So they walked
-  to the old town. He was tired because he woke up early, so he missed breakfast.
 </div>
 
 <!-- SLOT: praise — one concrete thing the student did right in this task; always keep one -->

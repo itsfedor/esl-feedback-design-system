@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- design-system: v1.4 -->
+<!-- design-system: v1.5 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
@@ -10,7 +10,7 @@
 <style>
 
   /* ============================================================
-     ESL Feedback Design System v1.3 — canonical stylesheet
+     ESL Feedback Design System v1.5 — canonical stylesheet
      Token values are frozen in tokens.json (repo root) and
      documented in docs/design-system.md.
      Do not tweak one document's copy: change the system, bump the
@@ -146,15 +146,7 @@
   .chip.green { border-color: var(--style); color: var(--style-ink); }
   .chip.purple { border-color: var(--punct); color: var(--punct-ink); }
 
-  /* green reveal boxes */
-  .revised-box {
-    background: var(--style-tint); border: 1px solid var(--praise-line); border-radius: var(--r-2);
-    padding: var(--sp-5); margin: var(--sp-4) 0; line-height: 1.8;
-  }
-  .revised-box .label {
-    display: inline-block; background: var(--style-ink); color: var(--white); font-size: var(--fs-6);
-    font-weight: 600; padding: var(--sp-1) var(--sp-3); border-radius: var(--r-3); margin-bottom: var(--sp-3);
-  }
+  /* green praise box */
   .praise-box {
     background: var(--style-tint); border: 1px solid var(--praise-line); border-radius: var(--r-2);
     padding: var(--sp-4) var(--sp-5); margin: var(--sp-3) 0;
@@ -210,7 +202,7 @@
   @media (max-width: 600px) { .tips-grid { grid-template-columns: 1fr; } }
   @media (max-width: 480px) {
     body { padding: var(--sp-5) var(--sp-4); }
-    .transcript-box, .revised-box, .strengths-box { padding: var(--sp-4); }
+    .transcript-box, .strengths-box { padding: var(--sp-4); }
     .fix-item { padding: var(--sp-3); }
   }
 
@@ -219,7 +211,7 @@
     body { max-width: none; padding: 0; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
     .audio-block { display: none; }
     .table-scroll { overflow: visible; }
-    .fix-item, .transcript-box, .revised-box, .praise-box, .callout, .tip-card, .strengths-box, table.comp tr { break-inside: avoid; page-break-inside: avoid; }
+    .fix-item, .transcript-box, .praise-box, .callout, .tip-card, .strengths-box, table.comp tr { break-inside: avoid; page-break-inside: avoid; }
     a { text-decoration: underline; }
   }
 
