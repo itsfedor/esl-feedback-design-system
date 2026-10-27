@@ -7,7 +7,7 @@
 
 # ESL Feedback Design System
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![License: Apache-2.0](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 [![WCAG](https://img.shields.io/badge/contrast-WCAG%20AA-1d7a4f)](docs/design-system.md#contrast-wcag-2x)
 [![Playwright QA](https://img.shields.io/badge/render%20QA-Playwright-2EAD33?logo=playwright&logoColor=fff)](tools/qa_run.py)
 
@@ -97,4 +97,9 @@ documents pass `--allow-no-audio`.
 
 ## License
 
-MIT © Fedor Molodtsov
+Apache-2.0 — see [LICENSE](LICENSE) and [NOTICE](NOTICE).
+
+- **Code:** use, modify and ship it commercially; the patent grant is explicit.
+- **Attribution:** the `NOTICE` file must travel with any redistribution, so credit stays attached.
+- **Materials:** templates, demo documents and audio samples in `templates/` and `examples/` are licensed CC BY-NC-SA 4.0 — see [LICENSE-CONTENT.md](LICENSE-CONTENT.md).
+- **Author:** Fedor Molodtsov — https://github.com/itsfedor
