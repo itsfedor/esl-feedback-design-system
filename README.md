@@ -7,7 +7,7 @@
 
 # ESL Feedback Design System
 
-[![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](LICENSE)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![WCAG](https://img.shields.io/badge/contrast-WCAG%20AA-1d7a4f)](docs/design-system.md#contrast-wcag-2x)
 [![Playwright QA](https://img.shields.io/badge/render%20QA-Playwright-2EAD33?logo=playwright&logoColor=fff)](tools/qa_run.py)
 
@@ -97,4 +97,4 @@ documents pass `--allow-no-audio`.
 
 ## License
 
-AGPL-3.0. See [LICENSE](LICENSE). If AGPL does not fit your use case, a commercial license is available — [COMMERCIAL.md](COMMERCIAL.md).
+MIT © Fedor Molodtsov
